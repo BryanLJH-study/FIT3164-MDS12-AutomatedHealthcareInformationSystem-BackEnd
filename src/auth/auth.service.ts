@@ -4,13 +4,34 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import * as argon from 'argon2';
 import { ConfigService } from '@nestjs/config';
 import { Prisma } from '@prisma/client';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
     constructor(
         private prisma: PrismaService,
         private config: ConfigService,
+        private jwt: JwtService,
     ) {}
+
+    async signToken(employeeId: number, email: string): Promise<{access_token: string}> {
+        const payload = {
+            sub: employeeId,
+            email,
+        };
+
+        const secret = this.config.get("JWT_SECRET");
+
+        const token = await this.jwt.signAsync(
+            payload,
+            {
+                // might add expire time?
+                secret: secret
+            }
+        )
+
+        return { access_token: token };
+    };
 
     async signup(dto: AuthSignUpDto) {
         // Generate hash of password
@@ -40,9 +61,8 @@ export class AuthService {
                 }
             });
 
-            // Return the saved employee
-            delete employee.hash
-            return employee;
+            // Return the employee's access token
+            return this.signToken(employee.employeeId, employee.email)
 
         } catch (error) {
             // Throw ForbiddenException if unique criteria not followed
@@ -79,8 +99,7 @@ export class AuthService {
             throw new ForbiddenException("Credentials Incorrect: Password is Incorrect")
         }
 
-        // Return employee object
-        delete employee.hash
-        return employee
+        // Return employee's access_token
+        return this.signToken(employee.employeeId, employee.email)
     }
 }
