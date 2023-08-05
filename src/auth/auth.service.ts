@@ -1,5 +1,5 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { AuthDto } from './dto';
+import { AuthSignInDto, AuthSignUpDto } from './dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as argon from 'argon2';
 import { ConfigService } from '@nestjs/config';
@@ -12,7 +12,7 @@ export class AuthService {
         private config: ConfigService,
     ) {}
 
-    async signup(dto: AuthDto) {
+    async signup(dto: AuthSignUpDto) {
         // Generate hash of password
         const hash = await argon.hash(dto.password);
 
@@ -38,9 +38,9 @@ export class AuthService {
                     title: dto.title,
                     specialty: dto.specialty
                 }
-            })
+            });
 
-            // return the saved employee
+            // Return the saved employee
             delete employee.hash
             return employee;
 
@@ -55,7 +55,32 @@ export class AuthService {
         }
     }
 
-    signin() {
-        return { msg: 'Signed In'}
+    async signin(dto: AuthSignInDto) {
+        // Find the employee by email
+        const employee = await this.prisma.employee.findUnique({
+            where: {
+                email: dto.email,
+            },
+        });
+
+        // If employee doesn't exist, throw exception
+        if (!employee) {
+            throw new ForbiddenException('Credentials Incorrect: User Does Not Exist');
+        }
+
+        // Verify password
+        const pwMatches = await argon.verify(
+            employee.hash,
+            dto.password
+        )
+
+        // If passwoord incorrect, throw exception
+        if (!pwMatches) {
+            throw new ForbiddenException("Credentials Incorrect: Password is Incorrect")
+        }
+
+        // Return employee object
+        delete employee.hash
+        return employee
     }
 }
