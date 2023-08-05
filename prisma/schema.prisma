@@ -30,12 +30,14 @@ model Employee {
 
   title     String
   specialty String?
+
+  appointments Appointment[]
 }
 
 model Patient {
   patientId Int      @id @default(autoincrement())
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   ic               String
   firstName        String
@@ -48,4 +50,23 @@ model Patient {
   emergencyNo      String?
   emergencyRemarks String?
   remarks          String?
+
+  appointments Appointment[]
+}
+
+model Appointment {
+  appointmentId Int @id @default(autoincrement())
+  registrationDateTime DateTime @default(now())
+
+  patientId Int
+  employeeId Int
+  appointmentDateTime DateTime 
+
+  reason String?
+  remarks String?
+
+  completed Boolean @default(false)
+
+  patient Patient @relation(fields: [patientId], references: [patientId])
+  employee Employee @relation(fields: [employeeId], references: [employeeId])
 }
