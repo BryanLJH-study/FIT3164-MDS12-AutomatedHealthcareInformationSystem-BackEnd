@@ -15,11 +15,11 @@ export class AuthDto {
 
     @IsString()
     @IsNotEmpty()
-    firstName: String
+    firstName: string
 
     @IsString()
     @IsNotEmpty()
-    lastName: String
+    lastName: string
     
     @IsDateString()
     @IsNotEmpty()
@@ -27,32 +27,32 @@ export class AuthDto {
 
     @IsString()
     @IsNotEmpty()
-    gender: String
+    gender: string
 
     @IsString()
     @IsNotEmpty()
-    nationality: String
+    nationality: string
 
     @IsMobilePhone()
     @IsNotEmpty()
-    phoneNo: String
+    phoneNo: string
 
     @IsMobilePhone()
     @IsOptional()
-    emergencyNo: String
+    emergencyNo: string
 
     @IsString()
     @IsOptional()
-    emergencyRemarks: String
+    emergencyRemarks: string
 
     @IsString()
     @IsNotEmpty()
-    title: String
+    title: string
 
     @IsString()
     @IsOptional()
-    specialty: String
+    specialty: string
 
     @IsNotEmpty()
-    adminCode: String
+    adminCode: string
 }
