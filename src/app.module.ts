@@ -4,6 +4,9 @@ import { EmployeeModule } from './employee/employee.module';
 import { PatientModule } from './patient/patient.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
+import { CommandModule } from 'nestjs-command';
+import { SeedCommmand } from './prisma/seed.command';
+import { SeedService } from './prisma/seed.service';
 
 @Module({
   imports: [
@@ -14,9 +17,10 @@ import { ConfigModule } from '@nestjs/config';
     EmployeeModule, 
     PatientModule, 
     PrismaModule,
+    CommandModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [SeedCommmand, SeedService],
 })
 
 export class AppModule {}
