@@ -2,7 +2,6 @@ import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/commo
 import { PrismaService } from 'src/prisma/prisma.service';
 import { AddPatientDto, EditPatientDto } from './dto';
 import { Prisma } from '@prisma/client';
-import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class PatientService {

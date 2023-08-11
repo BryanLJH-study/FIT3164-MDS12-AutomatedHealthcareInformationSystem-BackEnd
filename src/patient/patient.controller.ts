@@ -13,12 +13,12 @@ export class PatientController {
         return this.patientService.getAllPatients();
     }
 
-    @Post('add')
+    @Post()
     addPatient(@Body() dto: AddPatientDto) {
         return this.patientService.addPatient(dto);
     }
 
-    @Patch('edit')
+    @Patch()
     editPatientById(@Body() dto: EditPatientDto) {
         return this.patientService.editPatientById(dto);
     }
