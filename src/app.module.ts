@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { CommandModule } from 'nestjs-command';
 import { SeedCommmand } from './prisma/seed.command';
 import { SeedService } from './prisma/seed.service';
+import { AppointmentModule } from './appointment/appointment.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SeedService } from './prisma/seed.service';
     PatientModule, 
     PrismaModule,
     CommandModule,
+    AppointmentModule,
   ],
   controllers: [],
   providers: [SeedCommmand, SeedService],
