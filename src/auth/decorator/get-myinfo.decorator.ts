@@ -1,6 +1,6 @@
 import { ExecutionContext, createParamDecorator } from "@nestjs/common";
 
-export const GetEmployeeInfo = createParamDecorator(
+export const GetMyInfo = createParamDecorator(
     (
         data: string | undefined,
         ctx: ExecutionContext,

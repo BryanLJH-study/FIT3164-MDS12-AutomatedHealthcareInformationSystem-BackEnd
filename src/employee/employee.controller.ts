@@ -1,7 +1,6 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { Employee } from '@prisma/client';
-import { Request } from 'express';
-import { GetEmployeeInfo } from 'src/auth/decorator';
+import { GetMyInfo } from 'src/auth/decorator';
 import { JwtGuard } from 'src/auth/guard';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -11,7 +10,7 @@ export class EmployeeController {
     constructor(private prisma: PrismaService) {}
 
     @Get('myinfo')
-    getMyInfo(@GetEmployeeInfo() employee: Employee) {
+    getMyInfo(@GetMyInfo() employee: Employee) {
         return employee;
     }
 
