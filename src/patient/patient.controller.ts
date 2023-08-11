@@ -19,7 +19,7 @@ export class PatientController {
     }
 
     @Patch('edit')
-    editPatient(@Body() dto: EditPatientDto) {
-        return this.patientService.editPatient(dto);
+    editPatientById(@Body() dto: EditPatientDto) {
+        return this.patientService.editPatientById(dto);
     }
 }
