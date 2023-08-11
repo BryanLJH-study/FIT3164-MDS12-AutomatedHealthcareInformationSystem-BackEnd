@@ -46,7 +46,7 @@ model Patient {
   gender           String
   nationality      String
   phoneNo          String
-  email            String
+  email            String @unique
   emergencyNo      String?
   emergencyRemarks String?
   remarks          String?
