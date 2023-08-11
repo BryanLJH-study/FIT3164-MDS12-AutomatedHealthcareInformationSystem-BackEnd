@@ -39,11 +39,11 @@ export class AuthSignUpDto {
 
     @IsMobilePhone()
     @IsOptional()
-    emergencyNo: string
+    emergencyNo?: string
 
     @IsString()
     @IsOptional()
-    emergencyRemarks: string
+    emergencyRemarks?: string
 
     @IsString()
     @IsNotEmpty()
@@ -51,7 +51,7 @@ export class AuthSignUpDto {
 
     @IsString()
     @IsOptional()
-    specialty: string
+    specialty?: string
 
     @IsNotEmpty()
     adminCode: string
