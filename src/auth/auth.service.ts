@@ -68,7 +68,9 @@ export class AuthService {
             // Throw ForbiddenException if unique criteria not followed
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
-                    throw new ForbiddenException("Credentials Taken")
+                    throw new ForbiddenException(
+                        "Credentials Taken: " + error.message.split('\n').slice(8)
+                    );
                 }
             }
             throw error;
