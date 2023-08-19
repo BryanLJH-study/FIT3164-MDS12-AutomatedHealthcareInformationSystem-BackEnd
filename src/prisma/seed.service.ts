@@ -23,7 +23,7 @@ export class SeedService {
                 emergencyNo: "5552368",
                 emergencyRemarks: "Tell my wife I love her very much",
                 title: "Doctor",
-                specialty: "Prostate",
+                specialty: "Pediatric Care",
             }
         })
 
@@ -43,6 +43,44 @@ export class SeedService {
                 emergencyRemarks: "She knows...",
                 title: "Doctor",
                 specialty: "Gynaecology",
+            }
+        })
+
+        // Add Doctor 3
+        await this.prisma.employee.create({
+            data: {
+                email: "YuHan@gmail.com",
+                hash: await argon.hash("yuhan"),
+                ic: "6969696969",
+                firstName: "Yu",
+                lastName: "Han",
+                dob: new Date("1921-01-27").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "888888888888",
+                emergencyNo: "5552368",
+                emergencyRemarks: "Pai se",
+                title: "Doctor",
+                specialty: "Prostate",
+            }
+        })
+
+        // Add Doctor 4
+        await this.prisma.employee.create({
+            data: {
+                email: "JulianThong@gmail.com",
+                hash: await argon.hash("julianthong"),
+                ic: "420420420",
+                firstName: "Julian",
+                lastName: "Thong",
+                dob: new Date("1969-05-04").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "22413123123",
+                emergencyNo: "5552368",
+                emergencyRemarks: "Pai se",
+                title: "Doctor",
+                specialty: "Urology",
             }
         })
 
@@ -113,17 +151,92 @@ export class SeedService {
             }
         })
 
-        // // Add Appointment
-        // await this.prisma.appointment.create({
-        //     data: {
-        //         patient: { connect: { patientId: 2 } },                  // Connect the patient
-        //         employee: { connect: { employeeId: 2 } },               // Connect the employee
-        //         appointmentDateTime: new Date('2023-10-05').toISOString(),
-        //         reason: "Nothing in particular",
-        //         remarks: "Ya'll got summa dat?",
-        //         // previousAppointment: { connect: { previousAppointmentId: dto.previousAppointmentId } } // Connect the previous appointment
-        //     }
-        // })
+        // Add Patient
+        await this.prisma.patient.create({
+            data: {
+                ic: "0327876005",
+                firstName: "Bryan",
+                lastName: "Lean",
+                dob: new Date("1954-04-11").toISOString(),
+                gender: "Male",
+                nationality: "Sentinalese",
+                phoneNo: "1800180066",
+                email: "BryanLean@gmail.com",
+                emergencyNo: "2484345508",
+                emergencyRemarks: "Call an ambulance, call an ambulance...",
+            }
+        })
+
+        // Add Patient
+        await this.prisma.patient.create({
+            data: {
+                ic: "8589240180",
+                firstName: "Ian",
+                lastName: "Oong",
+                dob: new Date("1945-05-08").toISOString(),
+                gender: "Male",
+                nationality: "Zimbabwean",
+                phoneNo: "5055034455",
+                email: "IanOong@gmail.com",
+                emergencyNo: "5552368",
+                emergencyRemarks: "According to all known laws of aviation, a bee should not be able to fly...",
+            }
+        })
+
+        // Add Appointment
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 2 } },                  // Connect the patient
+                employee: { connect: { employeeId: 2 } },                // Connect the employee
+                appointmentDateTime: new Date('2023-10-05').toISOString(),
+                reason: "Nothing in particular",
+                remarks: "Ya'll got summa dat?",
+            }
+        })
+
+        // Add Appointment
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 4 } },                  // Connect the patient
+                employee: { connect: { employeeId: 3 } },                // Connect the employee
+                appointmentDateTime: new Date('2023-11-06').toISOString(),
+                reason: "It's a bit itchy",
+                remarks: "Is it bad doc?",
+            }
+        })
+
+        // Add Appointment
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 5 } },                  // Connect the patient
+                employee: { connect: { employeeId: 4 } },                // Connect the employee
+                appointmentDateTime: new Date('2024-01-05').toISOString(),
+                reason: "Oh the pain, the pain, so pain...",
+                remarks: "Need oxycontin, for pain...",
+            }
+        })
+
+        // Add Appointment
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 4 } },                  // Connect the patient
+                employee: { connect: { employeeId: 4 } },                // Connect the employee
+                appointmentDateTime: new Date('2023-12-05').toISOString(),
+                reason: "It hurts when I do this",
+                remarks: "What's a ligma?",
+            }
+        })
+
+         // Add Appointment
+         await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 5 } },                  // Connect the patient
+                employee: { connect: { employeeId: 3 } },                // Connect the employee
+                appointmentDateTime: new Date('2023-11-05').toISOString(),
+                reason: "Help me with deez",
+                remarks: "Got'em",
+            }
+        })
     }
 
    
