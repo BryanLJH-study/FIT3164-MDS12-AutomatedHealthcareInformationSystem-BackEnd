@@ -69,6 +69,18 @@ export class DiagnosisService {
             throw new NotFoundException('diagnosisId does not exist');
         }
 
+        // Get appointment by appointmentId
+        const appointment = this.prisma.appointment.findUnique({
+            where: {
+                appointmentId: dto.appointmentId,
+            }
+        })
+
+        // Check if appointment exists
+        if (!appointment) {
+            throw new NotFoundException('appointmentId does not exist');
+        }
+
         // If diagnosis exist update diagnosis and return object
         return this.prisma.diagnosis.update({
             where: {
