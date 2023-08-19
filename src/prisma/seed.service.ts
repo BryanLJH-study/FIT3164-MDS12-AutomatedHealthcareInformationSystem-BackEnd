@@ -237,6 +237,54 @@ export class SeedService {
                 remarks: "Got'em",
             }
         })
+
+        // Add Diagnosis
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: {connect: {appointmentId: 2}},
+                icd: 'W53',
+                symptoms: 'Patient can be puppeteered through scalp',
+                remarks: 'Patient has seemingly found the joy of cooking',
+            }
+        })
+
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: {connect: {appointmentId: 2}},
+                icd: 'B20',
+                symptoms: 'Bad, really bad',
+                remarks: 'Terminal',
+            }
+        })
+
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: {connect: {appointmentId: 4}},
+                icd: 'F20',
+                symptoms: 'Hallucination, Dellusions of Grandeur',
+                remarks: 'He keeps asking who is Joe',
+            }
+        })
+
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: {connect: {appointmentId: 3}},
+                icd: 'F14',
+                symptoms: 'Hopeless addiction',
+                remarks: 'Damn druggie',
+            }
+        })
+
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: {connect: {appointmentId: 5}},
+                icd: 'F95',
+                symptoms: 'Vocal Ticks',
+                remarks: 'Something about nuts?',
+            }
+        })
+
+
     }
 
    
