@@ -39,7 +39,7 @@ export class PatientService {
         // get patient by patientId
         const patient = await this.prisma.patient.findUnique({
             where: {
-                patientId: patientId,
+                patientId,
             }
         })
 
@@ -51,7 +51,7 @@ export class PatientService {
         // edit patient information and return if successful
         return this.prisma.patient.update({
             where: {
-                patientId: patientId
+                patientId
             },
             data: {
                 ...dto,
