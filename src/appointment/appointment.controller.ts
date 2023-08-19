@@ -28,9 +28,12 @@ export class AppointmentController {
         return this.appointmentService.addAppointment(dto);
     }
 
-    @Patch()
-    editAppointmentById(@Body() dto: EditAppointmentDto) {
-        return this.appointmentService.editAppointmentById(dto);
+    @Patch(':id')
+    editAppointmentById(
+        @Param('id', ParseIntPipe) appointmentId: number,
+        @Body() dto: EditAppointmentDto
+    ) {
+        return this.appointmentService.editAppointmentById(appointmentId, dto);
     }
 
     @Delete(':id')

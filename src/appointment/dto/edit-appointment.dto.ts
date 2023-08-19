@@ -2,10 +2,6 @@ import { IsBoolean, IsDateString, IsInt, IsNotEmpty, IsOptional, IsString } from
 
 export class EditAppointmentDto {
     @IsInt()
-    @IsNotEmpty()
-    appointmentId: number
-
-    @IsInt()
     @IsOptional()
     patientId?: number
 

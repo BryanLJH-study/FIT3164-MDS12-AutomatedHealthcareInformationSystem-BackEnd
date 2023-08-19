@@ -126,11 +126,11 @@ export class AppointmentService {
         }
     }
 
-    async editAppointmentById(dto: EditAppointmentDto) {
+    async editAppointmentById(appointmentId: number, dto: EditAppointmentDto) {
         // get appointment by patientId
         const appointment = await this.prisma.appointment.findUnique({
             where: {
-                appointmentId: dto.appointmentId,
+                appointmentId: appointmentId,
             }
         })
 
@@ -142,7 +142,7 @@ export class AppointmentService {
         // edit patient information and return if successful
         return this.prisma.appointment.update({
             where: {
-                appointmentId: dto.appointmentId
+                appointmentId: appointmentId
             },
             data: {
                 ...dto,
