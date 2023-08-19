@@ -31,24 +31,24 @@ export class AppointmentService {
             throw new NotFoundException('employeeId does not exist');
         }
 
-        // // Add appointment
-        // try {
-        //     const appointment = await this.prisma.appointment.create({
-        //         data: {
-        //             patient: { connect: { patientId: dto.patientId } },                  // Connect the patient
-        //             employee: { connect: { employeeId: dto.employeeId } },               // Connect the employee
-        //             appointmentDateTime: new Date(dto.appointmentDateTime).toISOString(),
-        //             reason: dto.reason,
-        //             remarks: dto.remarks,
-        //             completed: dto.completed,
-        //             previousAppointment: { connect: { previousAppointmentId: dto.previousAppointmentId } } // Connect the previous appointment
-        //         }
-        //     });
+        // Add appointment
+        try {
+            const appointment = await this.prisma.appointment.create({
+                data: {
+                    patient: { connect: { patientId: dto.patientId } },                  // Connect the patient
+                    employee: { connect: { employeeId: dto.employeeId } },               // Connect the employee
+                    appointmentDateTime: new Date(dto.appointmentDateTime).toISOString(),
+                    reason: dto.reason,
+                    remarks: dto.remarks,
+                    completed: dto.completed,
+                    // previousAppointment: { connect: { previousAppointmentId: dto.previousAppointmentId } } // Connect the previous appointment
+                }
+            });
 
-        //     return appointment;
+            return appointment;
 
-        // } catch (error) {
-        //     throw error;
-        // }
+        } catch (error) {
+            throw error;
+        }
     }
 }

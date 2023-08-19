@@ -112,6 +112,18 @@ export class SeedService {
                 emergencyRemarks: "YOLO",
             }
         })
+
+        // // Add Appointment
+        // await this.prisma.appointment.create({
+        //     data: {
+        //         patient: { connect: { patientId: 2 } },                  // Connect the patient
+        //         employee: { connect: { employeeId: 2 } },               // Connect the employee
+        //         appointmentDateTime: new Date('2023-10-05').toISOString(),
+        //         reason: "Nothing in particular",
+        //         remarks: "Ya'll got summa dat?",
+        //         // previousAppointment: { connect: { previousAppointmentId: dto.previousAppointmentId } } // Connect the previous appointment
+        //     }
+        // })
     }
 
    

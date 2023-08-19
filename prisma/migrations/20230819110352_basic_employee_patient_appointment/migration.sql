@@ -18,6 +18,7 @@ CREATE TABLE `Employee` (
     `specialty` VARCHAR(191) NULL,
 
     UNIQUE INDEX `Employee_email_key`(`email`),
+    UNIQUE INDEX `Employee_ic_key`(`ic`),
     PRIMARY KEY (`employeeId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -38,6 +39,8 @@ CREATE TABLE `Patient` (
     `emergencyRemarks` VARCHAR(191) NULL,
     `remarks` VARCHAR(191) NULL,
 
+    UNIQUE INDEX `Patient_ic_key`(`ic`),
+    UNIQUE INDEX `Patient_email_key`(`email`),
     PRIMARY KEY (`patientId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -53,7 +56,6 @@ CREATE TABLE `Appointment` (
     `completed` BOOLEAN NOT NULL DEFAULT false,
     `previousAppointmentId` INTEGER NULL,
 
-    UNIQUE INDEX `Appointment_previousAppointmentId_key`(`previousAppointmentId`),
     PRIMARY KEY (`appointmentId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -62,6 +64,3 @@ ALTER TABLE `Appointment` ADD CONSTRAINT `Appointment_patientId_fkey` FOREIGN KE
 
 -- AddForeignKey
 ALTER TABLE `Appointment` ADD CONSTRAINT `Appointment_employeeId_fkey` FOREIGN KEY (`employeeId`) REFERENCES `Employee`(`employeeId`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Appointment` ADD CONSTRAINT `Appointment_previousAppointmentId_fkey` FOREIGN KEY (`previousAppointmentId`) REFERENCES `Appointment`(`appointmentId`) ON DELETE SET NULL ON UPDATE CASCADE;

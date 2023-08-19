@@ -66,10 +66,10 @@ model Appointment {
   remarks String?
 
   completed Boolean @default(false)
-  previousAppointmentId Int? @unique
+  previousAppointmentId Int? 
 
   patient Patient @relation(fields: [patientId], references: [patientId])
   employee Employee @relation(fields: [employeeId], references: [employeeId])
-  previousAppointment Appointment? @relation("FollowUpAppointment", fields: [previousAppointmentId], references: [appointmentId])
-  followUpAppointment Appointment? @relation("FollowUpAppointment")
+  // previousAppointment Appointment? @relation("FollowUpAppointment", fields: [previousAppointmentId], references: [appointmentId])
+  // followUpAppointment Appointment? @relation("FollowUpAppointment")
 }
