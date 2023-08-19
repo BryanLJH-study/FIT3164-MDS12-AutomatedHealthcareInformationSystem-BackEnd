@@ -1,10 +1,6 @@
 import { IsDateString, IsEmail, IsInt, IsMobilePhone, IsNotEmpty, IsNumberString, IsOptional, IsString } from "class-validator"
 
 export class EditPatientDto {
-    @IsInt()
-    @IsNotEmpty()
-    patientId: number
-
     @IsNumberString()
     @IsOptional()
     ic?: string
