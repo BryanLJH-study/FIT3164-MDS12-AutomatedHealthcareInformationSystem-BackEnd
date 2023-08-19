@@ -54,7 +54,6 @@ CREATE TABLE `Appointment` (
     `reason` VARCHAR(191) NULL,
     `remarks` VARCHAR(191) NULL,
     `completed` BOOLEAN NOT NULL DEFAULT false,
-    `previousAppointmentId` INTEGER NULL,
 
     PRIMARY KEY (`appointmentId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

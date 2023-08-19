@@ -24,8 +24,4 @@ export class AddAppointmentDto {
     @IsBoolean()
     @IsOptional()
     completed?: boolean
-
-    // @IsInt()
-    // @IsOptional()
-    // previousAppointmentId?: number
 }

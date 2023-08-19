@@ -1,31 +1,31 @@
 import { IsBoolean, IsDateString, IsInt, IsNotEmpty, IsOptional, IsString } from "class-validator"
 
 export class EditAppointmentDto {
-    // @IsInt()
-    // @IsNotEmpty()
-    // patientId: number
+    @IsInt()
+    @IsNotEmpty()
+    appointmentId: number
 
-    // @IsInt()
-    // @IsNotEmpty()
-    // employeeId: number
+    @IsInt()
+    @IsOptional()
+    patientId?: number
 
-    // @IsDateString()
-    // @IsNotEmpty()
-    // appointmentDateTime: Date
+    @IsInt()
+    @IsOptional()
+    employeeId?: number
 
-    // @IsString()
-    // @IsOptional()
-    // reason?: string
+    @IsDateString()
+    @IsOptional()
+    appointmentDateTime?: Date
 
-    // @IsString()
-    // @IsOptional()
-    // remarks?: string
+    @IsString()
+    @IsOptional()
+    reason?: string
 
-    // @IsBoolean()
-    // @IsOptional()
-    // completed?: boolean
+    @IsString()
+    @IsOptional()
+    remarks?: string
 
-    // @IsInt()
-    // @IsOptional()
-    // previousAppointmentId?: number
+    @IsBoolean()
+    @IsOptional()
+    completed?: boolean
 }
