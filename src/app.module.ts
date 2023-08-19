@@ -8,6 +8,7 @@ import { CommandModule } from 'nestjs-command';
 import { SeedCommmand } from './prisma/seed.command';
 import { SeedService } from './prisma/seed.service';
 import { AppointmentModule } from './appointment/appointment.module';
+import { DiagnosisModule } from './diagnosis/diagnosis.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AppointmentModule } from './appointment/appointment.module';
     PrismaModule,
     CommandModule,
     AppointmentModule,
+    DiagnosisModule,
   ],
   controllers: [],
   providers: [SeedCommmand, SeedService],

@@ -18,7 +18,7 @@ model Employee {
   email String @unique
   hash  String
 
-  ic               String @unique
+  ic               String   @unique
   firstName        String
   lastName         String
   dob              DateTime
@@ -39,14 +39,14 @@ model Patient {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  ic               String @unique
+  ic               String   @unique
   firstName        String
   lastName         String
   dob              DateTime
   gender           String
   nationality      String
   phoneNo          String
-  email            String @unique
+  email            String   @unique
   emergencyNo      String?
   emergencyRemarks String?
   remarks          String?
@@ -55,17 +55,33 @@ model Patient {
 }
 
 model Appointment {
-  appointmentId Int @id @default(autoincrement())
+  appointmentId        Int      @id @default(autoincrement())
   registrationDateTime DateTime @default(now())
 
-  patientId Int
-  employeeId Int
-  appointmentDateTime DateTime 
+  patientId           Int
+  employeeId          Int
+  appointmentDateTime DateTime
 
-  reason String?
-  remarks String?
+  reason    String?
+  remarks   String?
   completed Boolean @default(false)
 
-  patient Patient @relation(fields: [patientId], references: [patientId])
+  diagnoses Diagnosis[]
+
+  patient  Patient  @relation(fields: [patientId], references: [patientId])
   employee Employee @relation(fields: [employeeId], references: [employeeId])
+}
+
+model Diagnosis {
+  diagnosisId Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  appointmentId Int
+
+  icd      String
+  symptoms String?
+  remarks  String?
+
+  appointment Appointment @relation(fields: [appointmentId], references: [appointmentId])
 }
