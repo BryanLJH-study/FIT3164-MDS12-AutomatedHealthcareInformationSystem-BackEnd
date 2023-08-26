@@ -10,6 +10,14 @@ export class PatientService {
     getAllPatients() {
         return this.prisma.patient.findMany();
     }
+    
+    getPatientById(patientId: number) {
+        return this.prisma.patient.findUnique({
+            where: {
+                patientId,
+            }
+        });
+    }
 
     async addPatient(dto: AddPatientDto) {
         try {

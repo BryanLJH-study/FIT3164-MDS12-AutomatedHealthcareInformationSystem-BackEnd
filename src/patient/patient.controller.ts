@@ -13,6 +13,11 @@ export class PatientController {
         return this.patientService.getAllPatients();
     }
 
+    @Get(':id') 
+    getPatientById(@Param('id', ParseIntPipe) patientId: number) {
+        return this.patientService.getPatientById(patientId);
+    };
+
     @Post()
     addPatient(@Body() dto: AddPatientDto) {
         return this.patientService.addPatient(dto);
