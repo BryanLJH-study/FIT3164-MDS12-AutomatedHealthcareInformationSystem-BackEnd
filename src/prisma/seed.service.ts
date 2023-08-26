@@ -248,6 +248,7 @@ export class SeedService {
             }
         })
 
+        // Add Diagnosis
         await this.prisma.diagnosis.create({
             data: {
                 appointment: {connect: {appointmentId: 2}},
@@ -257,6 +258,7 @@ export class SeedService {
             }
         })
 
+        // Add Diagnosis
         await this.prisma.diagnosis.create({
             data: {
                 appointment: {connect: {appointmentId: 4}},
@@ -266,6 +268,7 @@ export class SeedService {
             }
         })
 
+        // Add Diagnosis
         await this.prisma.diagnosis.create({
             data: {
                 appointment: {connect: {appointmentId: 3}},
@@ -275,6 +278,7 @@ export class SeedService {
             }
         })
 
+        // Add Diagnosis
         await this.prisma.diagnosis.create({
             data: {
                 appointment: {connect: {appointmentId: 5}},
