@@ -1,8 +1,9 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthSignInDto, AuthSignUpDto } from 'src/auth/dto';
+import * as pactum from 'pactum';
 
 describe('App e2e', () => {
   let app: INestApplication;
@@ -21,94 +22,298 @@ describe('App e2e', () => {
       })
     )
 
-    await app.init()
+    await app.init();
+    await app.listen(3333);
 
     prisma = app.get(PrismaService);
     await prisma.cleaDb();
+
+    pactum.request.setBaseUrl('http://localhost:3333');
   });
 
   afterAll(() => {
-    app.close()
+    app.close();
   });
   
   describe('Auth', () => {
+    const dto = {
+      email: "JohnDoe@gmail.com",
+      password: "johndoe",
+      ic: "0123456789",
+      firstName: "John",
+      lastName: "Doe",
+      dob: "1889-04-20",
+      gender: "Male",
+      nationality: "Malaysian",
+      phoneNo: "0327806803",
+      emergencyNo: "5552368",
+      emergencyRemarks: "Tell my wife I love her very much",
+      title: "Doctor",
+      specialty: "Pediatric Care",
+      adminCode: "admin",
+    }
+
     describe('Sign Up', () => {
-      it('should sign up doctor', () => {
-      
+      it('should sign up doctor John', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody(dto)
+          .expectStatus(201);
       });
 
-      it('should sign up nurse', () => {
-      
-      });
+      it.todo('invalid input fails validation');
     });
 
     describe('Sign In', () => {
-      it('should sign in', () => {
-      
+      it('should sign in as John', () => {
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody({
+            email: dto.email,
+            password: dto.password,
+          })
+          .expectStatus(200)
+          .stores('token', 'access_token');
       });
+
+      it.todo('invalid input fails validation');
     });
 
-    describe('Get My Info', () => {
-      
-    });
-  });
-
-  describe('Patient', () => {
-    it('should get no patients with "getAllPatients', () => {
-      
-    });
-
-
-    describe('Add Patient', () => {
-      
-    });
-
-    describe('Edit Patient Data', () => {
-      
-    });
-
-    it('should get no patients with "getAllPatients', () => {
-      
-    });
-
-    it('should get patients with "getPatientById', () => {
-      
-    });
   });
 
   describe('Employee', () => {
-    it('Get All Doctors', () => {
-      
+    it('should get John employee info', () => {
+      return pactum
+        .spec()
+        .get('/employees/myinfo')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}',
+        })
+        .expectStatus(200)
+        .expectBodyContains('John') // John is currently signed in
+        .stores('employeeId', 'employeeId');
+    });
+    
+    it('should get all doctors', () => {
+      return pactum
+        .spec()
+        .get('/employees/doctors')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .expectStatus(200)
+        .expectJsonLength(1); // Only 1 doctor
+    });
+  });
+
+
+  describe('Patient', () => {
+    const dto = {
+      ic: "123123123",
+      firstName: "Jane",
+      lastName: "Doe",
+      dob: "2000-01-01",
+      gender: "Female",
+      nationality: "British",
+      phoneNo: "34234346756",
+      email: "JaneDoe@gmail.com",
+      emergencyNo: "5552368",
+      emergencyRemarks: "Delete my browser history",
+    }
+
+    describe('Add Patient', () => {
+      it('should add patient Jane', () => {
+        return pactum
+          .spec()
+          .post('/patients/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody(dto)
+          .expectStatus(201)
+          .expectBodyContains(dto.firstName)
+          .stores('patientId', 'patientId'); // save Jane's patientId
+      })
+
+      it.todo('invalid input fails validation');
+    });
+
+    describe('Edit Patient Data', () => {
+      it('should edit patient Jane data', () => {
+        return pactum
+          .spec()
+          .patch('/patients/{patientId}')
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            dob: '1999-09-09',
+            nationality: 'Malaysian',
+          })
+          .expectStatus(200)
+          .expectBodyContains('1999-09-09')
+          .expectBodyContains('Malaysian');
+      })
+
+      it.todo('invalid input fails validation');
+    });
+
+    describe('Get Patient Data', () => {
+      it('should get all patients', () => {
+        return pactum
+        .spec()
+        .get('/patients/all')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .expectStatus(200)
+        .expectJsonLength(1); // Only 1 patient
+      });
+  
+      it('should get Jane patient data by patientId', () => {
+        return pactum
+          .spec()
+          .get('/patients/{patientId}') // Apply Jane's patientId
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(200)
+          .expectBodyContains('Jane');
+      });
     });
   });
 
   describe('Appointment', () => {
-    it('should get no appointments with "getAllAppointments', () => {
-      
-    });
-
+    const date1: String = '2023-10-01' // only initialize date since id variables stored
+    const date2: String = '2023-10-02' // alternative date for 2nd appointment
+    const date3: String = '2023-10-03' // alternative date for edit
+ 
     describe('Add Appointment', () => {
-      
+      it('should add appointment', () => {
+        return pactum
+          .spec()
+          .post('/appointments/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            patientId: '$S{patientId}',   // Patient Jane
+            employeeId: '$S{employeeId}', // Doctor John
+            appointmentDateTime: date1,
+          })
+          .expectStatus(201)
+          .expectBodyContains(date1)
+          .stores('appointmentId1', 'appointmentId');
+      });
+
+      it('should add non-conflicting appointment with same patient and doctor', () => {
+        return pactum
+          .spec()
+          .post('/appointments/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            patientId: '$S{patientId}',   // Patient Jane
+            employeeId: '$S{employeeId}', // Doctor John
+            appointmentDateTime: date2,   // non-conflicting date
+          })
+          .expectStatus(201)
+          .expectBodyContains(date2)
+          .stores('appointmentId2', 'appointmentId');
+      });
+
+      it('should not add conflicting appointment', () => {
+        return pactum
+        .spec()
+        .post('/appointments/')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .withBody({
+          patientId: '$S{patientId}',   // Patient Jane
+          employeeId: '$S{employeeId}', // Doctor John
+          appointmentDateTime: date1,   // conflicting date
+        })
+        .expectStatus(403); // Should receive forbidden exception
+      });
+
+      it.todo('more conflicting appointment types');
+
+      it.todo('invalid input fails validation');
     });
 
     describe('Edit Appointment Data', () => {
-      
+      it('should edit appointment', () => {
+        return pactum
+          .spec()
+          .patch('/appointments/{appointmentId}')
+          .withPathParams('appointmentId', '$S{appointmentId1}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            appointmentDateTime: date3, // edit date
+          })
+          .expectStatus(200)
+          .expectBodyContains(date3);
+      });
+
+      it.todo('invalid input fails validation');
     });
 
     describe('Delete Appointment', () => {
-      
+      it('should delete existing appointment', () => {
+        return pactum
+          .spec()
+          .delete('/appointments/{appointmentId}')
+          .withPathParams('appointmentId', '$S{appointmentId2}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(200);
+      });
+
+      it.todo('should not delete non-existing appointments');
     });
 
-    it('should get appointments with "getAllAppointments', () => {
-      
-    });
-
-    it('should get appointments with "getAppointmentsByPatientId"', () => {
-      
-    });
-
-    it('should get appointments with "getAppointmentsByEmployeeId"', () => {
-      
+    describe('Get Appointment Data', () => {
+      it('should get all appointments', () => {
+        return pactum
+        .spec()
+        .get('/appointments/all')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .expectStatus(200)
+        .expectJsonLength(1); // Only 1 appointment left
+      });
+  
+      it('should get all appointmets of patient with patientId', () => {
+        return pactum
+          .spec()
+          .get('/appointments/patient/{patientId}') // Apply Jane's patientId
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(200);
+      });
+  
+      it('should get all appointments of employee with employeeId', () => {
+        return pactum
+          .spec()
+          .get('/appointments/employee/{employeeId}') // Apply John's employeeId
+          .withPathParams('employeeId', '$S{employeeId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(200);
+      });
     });
   });
 
@@ -138,4 +343,4 @@ describe('App e2e', () => {
     });
   });
 
-})
+});
