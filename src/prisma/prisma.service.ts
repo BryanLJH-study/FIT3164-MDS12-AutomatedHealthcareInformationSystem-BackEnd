@@ -13,4 +13,14 @@ export class PrismaService extends PrismaClient{
             }
         })
     }
+
+    cleaDb() {
+        // Define transaction deleting all tables with explicit ordering
+        return this.$transaction([
+            this.diagnosis.deleteMany(),
+            this.appointment.deleteMany(),
+            this.patient.deleteMany(),
+            this.employee.deleteMany(),
+        ]);
+    }
 }

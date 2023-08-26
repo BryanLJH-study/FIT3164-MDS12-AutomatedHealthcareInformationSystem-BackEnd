@@ -9,3 +9,13 @@ services:
       MYSQL_USER: 'admin'
       MYSQL_PASSWORD: 'pasword'
       MYSQL_ROOT_PASSWORD: 'password'
+
+  test-db:
+    image: mysql:8.0
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_DATABASE: 'MDS12'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'pasword'
+      MYSQL_ROOT_PASSWORD: 'password'
