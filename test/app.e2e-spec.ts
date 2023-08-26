@@ -318,29 +318,103 @@ describe('App e2e', () => {
   });
 
   describe('Diagnosis', () => {
-    it('should get no diagnoses with "getAllDiagnoses', () => {
-      
-    });
-
-    it('should get appointments with "getDiagnosesByPatientId"', () => {
-      
-    });
+    const icd1 = 'F10'; // only need icd, already stored appointmentId1
+    const icd2 = 'F11'; // icd for 2nd diagnosis
+    const icd3 = 'F12'; // alternate icd for edit
 
     describe('Add Diagnosis', () => {
-      
+      it('should add diagnosis', () => {
+        return pactum
+          .spec()
+          .post('/diagnoses/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            appointmentId: '$S{appointmentId1}', 
+            icd: icd1,
+          })
+          .expectStatus(201)
+          .expectBodyContains(icd1)
+          .stores('diagnosisId1', 'diagnosisId');
+      })
+
+      it('should add diagnosis to same appointment', () => {
+        return pactum
+          .spec()
+          .post('/diagnoses/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            appointmentId: '$S{appointmentId1}', 
+            icd: icd2,
+          })
+          .expectStatus(201)
+          .expectBodyContains(icd2)
+          .stores('diagnosisId2', 'diagnosisId');
+      })
+
+      it.todo('invalid input fails validation');
     });
 
-    describe('Edit Diagnosis Data', () => {
-      
-    });
+    // describe('Edit Diagnosis Data', () => {
+    //   it('should edit diagnosis', () => {
+    //     return pactum
+    //       .spec()
+    //       .patch('/diagnoses/{diagnosisId}')
+    //       .withPathParams('diagnosisId', '${diagnosisId2}')
+    //       .withHeaders({
+    //         Authorization: 'Bearer $S{token}'
+    //       })
+    //       .withBody({
+    //         icd: icd3,
+    //       })
+    //       .expectStatus(200)
+    //       .expectBodyContains(icd3)
+    //       .inspect();
+    //   });
+
+    //   it.todo('invalid input fails validation');
+    // });
 
     describe('Delete Diagnosis', () => {
-      
+      it('should edit diagnosis', () => {
+        return pactum
+          .spec()
+          .delete('/diagnoses/{diagnosisId}')
+          .withPathParams('diagnosisId', '$S{diagnosisId2}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(200);
+      });
     });
 
-    it('should get diagnoses with "getAllDiagnoses', () => {
-      
+    describe('Get Diagnosis Data', () => {
+      it('should get all diagnoses', () => {
+        return pactum
+        .spec()
+        .get('/diagnoses/all')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .expectStatus(200)
+        .expectJsonLength(1); // Only 1 diagnosis left
+      });
+
+      it ('should get all diagnoses of patient with patientId', () => {
+        return pactum
+        .spec()
+        .get('/diagnoses/patient/{patientId}') // Apply Jane's patientId
+        .withPathParams('patientId', '$S{patientId}')
+        .withHeaders({
+          Authorization: 'Bearer $S{token}'
+        })
+        .expectStatus(200);
+      });
     });
+
   });
 
 });
