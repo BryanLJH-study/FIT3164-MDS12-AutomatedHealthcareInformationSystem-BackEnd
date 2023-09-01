@@ -16,7 +16,7 @@
     "db:test:restart": "npm run db:test:rm && npm run db:test:up && sleep 30 && npm run prisma:test:deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node dist/main && npm run prisma:dev:deploy && npx nestjs-command db:seed",
+    "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
