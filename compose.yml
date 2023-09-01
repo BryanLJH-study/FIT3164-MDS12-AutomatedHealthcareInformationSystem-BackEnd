@@ -1,21 +1,21 @@
 version: '3.8'
 services:
   dev-db:
-    image: mysql:8.0
+    image: postgres:15
     ports:
-      - '3306:3306'
+      - '5432:5432'
     environment:
-      MYSQL_DATABASE: 'MDS12'
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: 'pasword'
-      MYSQL_ROOT_PASSWORD: 'password'
+      POSTGRES_DATABASE: 'MDS12'
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_ROOT_PASSWORD: 'password'
 
   test-db:
-    image: mysql:8.0
+    image: postgres:15
     ports:
-      - '3307:3306'
+      - '5433:5432'
     environment:
-      MYSQL_DATABASE: 'MDS12'
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: 'pasword'
-      MYSQL_ROOT_PASSWORD: 'password'
+      POSTGRES_DATABASE: 'MDS12'
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_ROOT_PASSWORD: 'password'
