@@ -14,7 +14,7 @@ export class PrismaService extends PrismaClient{
         })
     }
 
-    cleaDb() {
+    cleanDb() {
         // Define transaction deleting all tables with explicit ordering
         return this.$transaction([
             this.diagnosis.deleteMany(),

@@ -8,6 +8,7 @@ export class SeedService {
 
     // Initializes Database Entries for Development
     async seedInitialData() {
+        await this.prisma.cleanDb();
         // Add Doctor 1
         await this.prisma.employee.create({
             data: {
