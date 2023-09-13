@@ -537,8 +537,8 @@ export class SeedService {
         // Add Doctor 1
         await this.prisma.employee.create({
             data: {
-                email: "thebackenddoctor@protonmail.com",
-                hash: await argon.hash("D2G<1|D5@uS2_Qi7x`Si\ac"),
+                email: "JohnDoe@gmail.com",
+                hash: await argon.hash("johndoe"),
                 ic: "790723398417",
                 firstName: "Bryan",
                 lastName: "Lean",
@@ -964,6 +964,6 @@ export class SeedService {
         })
 
 
-        
+
     }
 }
