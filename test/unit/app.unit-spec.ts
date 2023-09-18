@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../../src/app.module';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { AuthSignInDto, AuthSignUpDto } from 'src/auth/dto';
 import * as pactum from 'pactum';
 
-describe('App e2e', () => {
+describe('App unit', () => {
   let app: INestApplication;
   let prisma: PrismaService;
 
@@ -62,7 +62,7 @@ describe('App e2e', () => {
           .expectStatus(201);
       });
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
     });
 
     describe('Sign In', () => {
@@ -78,7 +78,9 @@ describe('App e2e', () => {
           .stores('token', 'access_token');
       });
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
   });
@@ -137,7 +139,7 @@ describe('App e2e', () => {
           .stores('patientId', 'patientId'); // save Jane's patientId
       })
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
     });
 
     describe('Edit Patient Data', () => {
@@ -158,7 +160,9 @@ describe('App e2e', () => {
           .expectBodyContains('Malaysian');
       })
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
     describe('Get Patient Data', () => {
@@ -184,6 +188,10 @@ describe('App e2e', () => {
           .expectStatus(200)
           .expectBodyContains('Jane');
       });
+
+      it.todo('invalid input (by id)');
+      
+      it.todo('robustness check(by id)');
     });
   });
 
@@ -242,9 +250,9 @@ describe('App e2e', () => {
         .expectStatus(403); // Should receive forbidden exception
       });
 
-      it.todo('more conflicting appointment types');
-
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
+      
+      it.todo('robustness check (more)');
     });
 
     describe('Edit Appointment Data', () => {
@@ -263,7 +271,9 @@ describe('App e2e', () => {
           .expectBodyContains(date3);
       });
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
     describe('Delete Appointment', () => {
@@ -278,7 +288,9 @@ describe('App e2e', () => {
           .expectStatus(200);
       });
 
-      it.todo('should not delete non-existing appointments');
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
     describe('Get Appointment Data', () => {
@@ -314,6 +326,10 @@ describe('App e2e', () => {
           })
           .expectStatus(200);
       });
+
+      it.todo('invalid input (by patient and employee id)');
+      
+      it.todo('robustness check (by patient and employee id)');
     });
   });
 
@@ -355,9 +371,21 @@ describe('App e2e', () => {
           .stores('diagnosisId2', 'diagnosisId');
       })
 
-      it.todo('invalid input fails validation');
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
+    describe('Edit Diagnosis Data', () => {
+      it.todo('should edit diagnosis');
+
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
+     
+    });
+
+    // NOTE: THIS IS A FAILED ATTEMPT FOR EDIT DIAGNOSIS
     // describe('Edit Diagnosis Data', () => {
     //   it('should edit diagnosis', () => {
     //     return pactum
@@ -379,7 +407,7 @@ describe('App e2e', () => {
     // });
 
     describe('Delete Diagnosis', () => {
-      it('should edit diagnosis', () => {
+      it('should delete diagnosis', () => {
         return pactum
           .spec()
           .delete('/diagnoses/{diagnosisId}')
@@ -389,6 +417,10 @@ describe('App e2e', () => {
           })
           .expectStatus(200);
       });
+
+      it.todo('invalid input');
+      
+      it.todo('robustness check');
     });
 
     describe('Get Diagnosis Data', () => {
@@ -413,6 +445,10 @@ describe('App e2e', () => {
         })
         .expectStatus(200);
       });
+
+      it.todo('invalid input (by patient id');
+      
+      it.todo('robustness check (by patient id)');
     });
 
   });
