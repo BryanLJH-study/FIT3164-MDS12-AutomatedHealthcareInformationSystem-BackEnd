@@ -63,6 +63,8 @@ describe('App unit', () => {
       });
 
       it.todo('invalid input');
+
+      it.todo('robustness check');
     });
 
     describe('Sign In', () => {
