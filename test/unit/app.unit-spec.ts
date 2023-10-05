@@ -104,11 +104,21 @@ describe('App unit', () => {
           .expectStatus(400);
       });
 
-      it('should not sign up again using existing email', () => {
+      it('should not sign up again given existing email', () => {
         return pactum
           .spec()
           .post('/auth/signup')
           .withBody(dto)
+          .expectStatus(403);
+      });
+
+      it('should not sign up again given existing ic', () => {
+        const dto3 = { ...dto2 };
+        dto3.email = "nonduplicateemail@gmail.com"
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody(dto3)
           .expectStatus(403);
       });
     });
@@ -126,25 +136,23 @@ describe('App unit', () => {
           .stores('token', 'access_token');
       });
 
-      // invalid email
       it('should not sign in given invalid email', () => {
         return pactum
           .spec()
           .post('/auth/signin')
           .withBody({
-            email: "johndoegmail.com",
+            email: "johndoegmail.com",       // invalid email
             password: dto.password,
           })
           .expectStatus(400)
       });
 
-      // nonexistent email
-      it('should not sign in given nonexisten email', () => {
+      it('should not sign in given nonexistent email', () => {
         return pactum
           .spec()
           .post('/auth/signin')
           .withBody({
-            email: "janedoe@gmail.com",
+            email: "janedoe@gmail.com",      // nonexistent email
             password: "1234",
           })
           .expectStatus(403)
@@ -252,6 +260,19 @@ describe('App unit', () => {
           .withBody(dto)
           .expectStatus(403)
       })
+
+      it('should not be able to add patient again using existing ic', () => {
+        const dto3 = { ...dto2 } 
+        dto3.email = "nonduplicateemail@gmail.com"
+        return pactum
+          .spec()
+          .post('/patients/')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody(dto3)
+          .expectStatus(403)
+      })
     });
 
     describe('Edit Patient Data', () => {
@@ -298,22 +319,33 @@ describe('App unit', () => {
           .expectStatus(400);
       })      
       
-      it.todo('@bryan');
-      // it('should not be able to edit if given existing email', () => {
-      //   return pactum
-      //     .spec()
-      //     .patch('/patients/{patientId}')
-      //     .withPathParams('patientId', '$S{patientId}')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .withBody({
-      //       email: "jackthereaper@gmail.com"
-      //     })   // empty dictionary
-      //     .expectStatus(403);
-      // })
+      it('should not be able to edit if given another existing email', () => {
+        return pactum
+          .spec()
+          .patch('/patients/{patientId}')
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            email: "jackthereaper@gmail.com"
+          })
+          .expectStatus(500);
+      })
 
-    
+      it('should not be able to edit if given another existing ic', () => {
+        return pactum
+          .spec()
+          .patch('/patients/{patientId}')
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            ic: "990909099998"
+          })
+          .expectStatus(500);
+      })
     });
 
     describe('Get Patient Data', () => {
@@ -352,7 +384,7 @@ describe('App unit', () => {
           .expectStatus(400)
       });
 
-      it.todo("@bryan");
+      it.todo("bryan")
       // it('should not get any patient\'s data given nonexistent patientId', () => {
       //   return pactum
       //     .spec()
@@ -661,8 +693,8 @@ describe('App unit', () => {
       //     .withBody({
       //       appointmentDateTime: date3,   // conflicting date          
       //     })
-      //     .expectStatus(403);             // should be forbidden
-    
+      //     .expectStatus(403);             // getting 200 instead
+      // });
     });
 
     describe('Delete Appointment', () => {
@@ -1058,7 +1090,5 @@ describe('App unit', () => {
         .expectStatus(404);
       });
     });
-
   });
-
 });
