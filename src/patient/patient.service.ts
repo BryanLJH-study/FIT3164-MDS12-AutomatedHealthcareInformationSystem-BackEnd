@@ -67,4 +67,23 @@ export class PatientService {
             } 
         });
     }
+
+    async deletePatientById(patientId: number) {
+        try {
+            await this.prisma.patient.delete({
+                where: {
+                    patientId,
+                }
+            })
+
+        } catch (error) {
+            if (error instanceof Prisma.PrismaClientKnownRequestError) {
+                throw new NotFoundException(
+                        error.message.split('\n').slice(8)
+                )
+            }
+
+            throw error;
+        }  
+    }
 }

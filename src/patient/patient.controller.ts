@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, Delete, UseGuards } from '@nestjs/common';
 import { PatientService } from './patient.service';
 import { AddPatientDto, EditPatientDto } from './dto';
 import { JwtGuard } from 'src/auth/guard';
@@ -30,4 +30,9 @@ export class PatientController {
     ) {
         return this.patientService.editPatientById(patientId, dto);
     }
+
+    @Delete(':id') 
+    deletePatientById(@Param('id', ParseIntPipe) patientId: number) {
+        return this.patientService.deletePatientById(patientId);
+    };
 }
