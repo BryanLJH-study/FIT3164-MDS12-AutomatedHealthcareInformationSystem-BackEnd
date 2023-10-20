@@ -320,34 +320,34 @@ describe('App unit', () => {
       })      
       
       it.todo("error source 1")
-      // it('should not be able to edit if given another existing email', () => {
-      //   return pactum
-      //     .spec()
-      //     .patch('/patients/{patientId}')
-      //     .withPathParams('patientId', '$S{patientId}')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .withBody({
-      //       email: "jackthereaper@gmail.com"
-      //     })
-      //     .expectStatus(500);
-      // })
+      it('should not be able to edit if given another existing email', () => {
+        return pactum
+          .spec()
+          .patch('/patients/{patientId}')
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            email: "jackthereaper@gmail.com"
+          })
+          .expectStatus(500);
+      })
 
       it.todo("error source 2")
-      // it('should not be able to edit if given another existing ic', () => {
-      //   return pactum
-      //     .spec()
-      //     .patch('/patients/{patientId}')
-      //     .withPathParams('patientId', '$S{patientId}')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .withBody({
-      //       ic: "990909099998"
-      //     })
-      //     .expectStatus(500);
-      // })
+      it('should not be able to edit if given another existing ic', () => {
+        return pactum
+          .spec()
+          .patch('/patients/{patientId}')
+          .withPathParams('patientId', '$S{patientId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            ic: "990909099998"
+          })
+          .expectStatus(500);
+      })
     });
 
     describe('Get Patient Data', () => {
@@ -963,17 +963,17 @@ describe('App unit', () => {
       });
 
       it.todo("error source 3")
-      // it('should not edit any diagnosis given nonexistent diagnosisId', () => {
-      //   return pactum
-      //     .spec()
-      //     .patch('/diagnoses/{diagnosisId}')
-      //     .withPathParams('diagnosisId', '999')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .withBody({})
-      //     .expectStatus(500);
-      // });
+      it('should not edit any diagnosis given nonexistent diagnosisId', () => {
+        return pactum
+          .spec()
+          .patch('/diagnoses/{diagnosisId}')
+          .withPathParams('diagnosisId', '999')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({})
+          .expectStatus(500);
+      });
       
       it('should not edit any diagnosis given nonexistent appointmentId', () => {
         return pactum
