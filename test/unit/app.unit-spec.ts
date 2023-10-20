@@ -319,7 +319,7 @@ describe('App unit', () => {
           .expectStatus(400);
       })      
       
-      it.todo("error source 1")
+      // Prisma exception
       it('should not be able to edit if given another existing email', () => {
         return pactum
           .spec()
@@ -334,7 +334,7 @@ describe('App unit', () => {
           .expectStatus(500);
       })
 
-      it.todo("error source 2")
+      // Prisma Exception
       it('should not be able to edit if given another existing ic', () => {
         return pactum
           .spec()
@@ -962,7 +962,7 @@ describe('App unit', () => {
           .expectStatus(400);
       });
 
-      it.todo("error source 3")
+      // Prisma exception
       it('should not edit any diagnosis given nonexistent diagnosisId', () => {
         return pactum
           .spec()
