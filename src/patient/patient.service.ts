@@ -11,12 +11,18 @@ export class PatientService {
         return this.prisma.patient.findMany();
     }
     
-    getPatientById(patientId: number) {
-        return this.prisma.patient.findUnique({
+    async getPatientById(patientId: number) {
+        const patient = await this.prisma.patient.findUnique({
             where: {
                 patientId,
             }
         });
+
+        if (!patient) {
+            throw new NotFoundException(`Patient with ID ${patientId} not found`);
+          }
+          
+        return patient
     }
 
     async addPatient(dto: AddPatientDto) {

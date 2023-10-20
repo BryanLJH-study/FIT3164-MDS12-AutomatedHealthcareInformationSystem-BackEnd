@@ -386,17 +386,16 @@ describe('App unit', () => {
           .expectStatus(400)
       });
 
-      it.todo("bryan")
-      // it('should not get any patient\'s data given nonexistent patientId', () => {
-      //   return pactum
-      //     .spec()
-      //     .get('/patients/{patientId}') // Apply nonexistent patientId
-      //     .withPathParams('patientId', '999')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .expectStatus(404);  // getting 200 instead
-      // });
+      it('should not get any patient\'s data given nonexistent patientId', () => {
+        return pactum
+          .spec()
+          .get('/patients/{patientId}') // Apply nonexistent patientId
+          .withPathParams('patientId', '999')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .expectStatus(404);  // getting 200 instead
+      });
     });
   });
 
