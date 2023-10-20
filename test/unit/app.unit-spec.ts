@@ -566,10 +566,10 @@ describe('App unit', () => {
             Authorization: 'Bearer $S{token}'
           })
           .withBody({
-            appointmentDateTime: date3, // edit date
+            appointmentDateTime: date4, // edit date
           })
           .expectStatus(200)
-          .expectBodyContains(date3);
+          .expectBodyContains(date4);
       });
 
       it('should edit even if no other argument is given', () => {
@@ -682,20 +682,20 @@ describe('App unit', () => {
           .expectStatus(400);
       });
       
-      it.todo('@bryan');
-      // it('should not allow editing appointment to be in conflict with another appointment', () => {
-      //   return pactum
-      //     .spec()
-      //     .patch('/appointments/{appointmentId}')
-      //     .withPathParams('appointmentId', '$S{appointmentId1}')
-      //     .withHeaders({
-      //       Authorization: 'Bearer $S{token}'
-      //     })
-      //     .withBody({
-      //       appointmentDateTime: date3,   // conflicting date          
-      //     })
-      //     .expectStatus(403);             // getting 200 instead
-      // });
+      // Interesting Error mentioned in Test Report
+      it('should not allow editing appointment to be in conflict with another appointment', () => {
+        return pactum
+          .spec()
+          .patch('/appointments/{appointmentId}')
+          .withPathParams('appointmentId', '$S{appointmentId1}')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}'
+          })
+          .withBody({
+            appointmentDateTime: date3,   // conflicting date          
+          })
+          .expectStatus(403);             // getting 200 instead
+      });
     });
 
     describe('Delete Appointment', () => {
@@ -989,27 +989,6 @@ describe('App unit', () => {
       });
      
     });
-
-    // NOTE: THIS IS A FAILED ATTEMPT FOR EDIT DIAGNOSIS
-    // describe('Edit Diagnosis Data', () => {
-    //   it('should edit diagnosis', () => {
-    //     return pactum
-    //       .spec()
-    //       .patch('/diagnoses/{diagnosisId}')
-    //       .withPathParams('diagnosisId', '${diagnosisId2}')
-    //       .withHeaders({
-    //         Authorization: 'Bearer $S{token}'
-    //       })
-    //       .withBody({
-    //         icd: icd3,
-    //       })
-    //       .expectStatus(200)
-    //       .expectBodyContains(icd3)
-    //       .inspect();
-    //   });
-
-    //   it.todo('invalid input fails validation');
-    // });
 
     describe('Delete Diagnosis', () => {
       it('should delete diagnosis', () => {

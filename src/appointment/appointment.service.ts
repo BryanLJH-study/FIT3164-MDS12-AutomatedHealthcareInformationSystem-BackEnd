@@ -132,12 +132,40 @@ export class AppointmentService {
             where: {
                 appointmentId,
             }
-        })
+        });
 
         // check if appointment exists
         if (!appointment) {
             throw new NotFoundException('appointmentId does not exist')
-        }
+        };
+
+        // check if edit dto patient/doctor has clashing appointmentDateTime
+        if (dto.appointmentDateTime) {
+            const existing_appointment = await this.prisma.appointment.findFirst({
+                where: {
+                    OR: [
+                        {
+                            patient: { patientId: dto.patientId },
+                            appointmentDateTime: new Date(dto.appointmentDateTime).toISOString(),
+                            NOT: {
+                                appointmentId: appointmentId,
+                            }
+                        },
+                        {
+                            employee: { employeeId: dto.employeeId },
+                            appointmentDateTime: new Date(dto.appointmentDateTime).toISOString(),
+                            NOT: {
+                                appointmentId: appointmentId,
+                            }
+                        },
+                    ]
+                }
+            })
+
+            if (existing_appointment) {
+                throw new ForbiddenException('Conflicting appointment already exists');
+            }
+        } 
 
         // edit patient information and return if successful
         return this.prisma.appointment.update({
