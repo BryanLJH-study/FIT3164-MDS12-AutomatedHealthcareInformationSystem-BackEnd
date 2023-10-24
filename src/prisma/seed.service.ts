@@ -443,6 +443,228 @@ export class SeedService {
                 createdAt: new Date("2023-10-07").toISOString(),
             }
         })
+        // Add Patient 16
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-12 20:13").toISOString(),
+                ic: "971030084440",
+                firstName: "Ava",
+                lastName: "Maria",
+                dob: new Date("1997-10-30").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+601194126618",
+                email: "christmastime@icloud.com",
+                emergencyNo: "+60173394784",
+                emergencyRemarks: "mother",
+                remarks: null,
+            }
+        })
+        // Add Patient 17
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-14 13:46").toISOString(),
+                ic: "470526529353",
+                firstName: "Chun Kai",
+                lastName: "Lim",
+                dob: new Date("1947-05-26").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+601128703140",
+                email: "cklim99@icloud.com",
+                emergencyNo: "+60123706845",
+                emergencyRemarks: "son",
+                remarks: "history of hypertension",
+            }
+        })
+        // Add Patient 18
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-22 19:13").toISOString(),
+                ic: "840422475019",
+                firstName: "Manfred",
+                lastName: "Gan",
+                dob: new Date("1984-04-22").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+60120603234",
+                email: "manfredwhye@outlook.com",
+                emergencyNo: "+60133246718",
+                emergencyRemarks: "father",
+                remarks: "asthmatic",
+            }
+        })
+        // Add Patient 19
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-11 20:42").toISOString(),
+                ic: "851211285986",
+                firstName: "Olivia",
+                lastName: "Wilde",
+                dob: new Date("1985-12-11").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+601120419370",
+                email: "oliviawildest@gmail.com",
+                emergencyNo: "+60162363663",
+                emergencyRemarks: "spouse",
+                remarks: "history of hypertension",
+            }
+        })
+        // Add Patient 20
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-22 16:29").toISOString(),
+                ic: "040422166964",
+                firstName: "Hui Min",
+                lastName: "Lim",
+                dob: new Date("2004-04-22").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+60170850615",
+                email: "limhuimin990612@gmail.com",
+                emergencyNo: "+601113146805",
+                emergencyRemarks: "mother",
+                remarks: null,
+            }
+        })
+        // Add Patient 21
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-09 15:30").toISOString(),
+                ic: "041012018661",
+                firstName: "Hao Feng",
+                lastName: "Chuah",
+                dob: new Date("2004-10-12").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+60190401276",
+                email: "chuahhf@protonmail.com",
+                emergencyNo: "+60147321132",
+                emergencyRemarks: "father",
+                remarks: "family history of parkinson's",
+            }
+        })
+        // Add Patient 22
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-18 12:32").toISOString(),
+                ic: "990905366521",
+                firstName: "Obi-Wan",
+                lastName: "Kenobi",
+                dob: new Date("1999-09-05").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+60134594632",
+                email: "kenobi@yahoo.com",
+                emergencyNo: "+60101903096",
+                emergencyRemarks: "grandparent",
+                remarks: "stomach stab wound observed",
+            }
+        })
+        // Add Patient 23
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-13 17:22").toISOString(),
+                ic: "780122503072",
+                firstName: "Le Shin",
+                lastName: "Lim",
+                dob: new Date("1978-01-22").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+601194444869",
+                email: "chiaroscuro@gmail.com",
+                emergencyNo: "+60179411834",
+                emergencyRemarks: "father",
+                remarks: null,
+            }
+        })
+        // Add Patient 24
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-11-05 13:27").toISOString(),
+                ic: "990416461848",
+                firstName: "Billie",
+                lastName: "Eilish",
+                dob: new Date("1999-04-16").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+60187518158",
+                email: "b.eilish@hotmail.com",
+                emergencyNo: "+601156623152",
+                emergencyRemarks: "guardian",
+                remarks: null,
+            }
+        })
+        // Add Patient 25
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-20 10:30").toISOString(),
+                ic: "640930562346",
+                firstName: "Mulan",
+                lastName: "Hua",
+                dob: new Date("1964-09-30").toISOString(),
+                gender: "Female",
+                nationality: "Malaysian",
+                phoneNo: "+60131122326",
+                email: "iamagirl@qq.com",
+                emergencyNo: "+601183871084",
+                emergencyRemarks: "spouse",
+                remarks: "vegetarian",
+            }
+        })
+        // Add Patient 26
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-21 16:30").toISOString(),
+                ic: "260816546805",
+                firstName: "Mao",
+                lastName: "Zedong",
+                dob: new Date("1926-08-16").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+601131905566",
+                email: "chairman.mao@gmail.com",
+                emergencyNo: "+60179012246",
+                emergencyRemarks: "spouse",
+                remarks: "alzheimer's",
+            }
+        })
+        // Add Patient 27
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-22 19:58").toISOString(),
+                ic: "720714077639",
+                firstName: "Jimmy",
+                lastName: "Choo",
+                dob: new Date("1972-07-14").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+601166428788",
+                email: "shoeguy@gmail.com",
+                emergencyNo: "+601194215328",
+                emergencyRemarks: "mother",
+                remarks: "history of depression",
+            }
+        })
+        // Add Patient 28
+        await this.prisma.patient.create({
+            data: {
+                createdAt: new Date("2023-10-11 18:53").toISOString(),
+                ic: "950211481637",
+                firstName: "Hakimi Yusof",
+                lastName: "bin Tayoub",
+                dob: new Date("1995-02-11").toISOString(),
+                gender: "Male",
+                nationality: "Malaysian",
+                phoneNo: "+601165318446",
+                email: "hakimiyusoftayoub@qq.com",
+                emergencyNo: "+60109597538",
+                emergencyRemarks: "spouse",
+                remarks: "history of migraines",
+            }
+        })
+
 
         // ===== APPOINTMENTS =====
         // Add Appointment 1
@@ -619,6 +841,238 @@ export class SeedService {
                 reason: "lung screening",
             }
         })
+        // Add Appointment 18
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 16 } },
+                employee: { connect: { employeeId: 1 } },
+                appointmentDateTime: new Date("2023-01-17 14:00").toISOString(),
+                reason: "persistent hiccups",
+                remarks: "may need referral to gastroenterologist",
+                completed: true,
+            }
+        })
+        // Add Appointment 19
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 17 } },
+                employee: { connect: { employeeId: 4 } },
+                appointmentDateTime: new Date("2023-01-25 10:00").toISOString(),
+                reason: "frequent urination at night",
+                completed: true,
+            }
+        })
+        // Add Appointment 20
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 16 } },
+                employee: { connect: { employeeId: 2 } },
+                appointmentDateTime: new Date("2023-02-01 10:00").toISOString(),
+                reason: "difficulty seeing at night",
+                completed: true,
+            }
+        })
+        // Add Appointment 21
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 18 } },
+                employee: { connect: { employeeId: 7 } },
+                appointmentDateTime: new Date("2023-02-02 10:00").toISOString(),
+                reason: "skin rash develops when exposed to sunlight",
+                completed: true,
+            }
+        })
+        // Add Appointment 22
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 19 } },
+                employee: { connect: { employeeId: 6 } },
+                appointmentDateTime: new Date("2023-02-21 10:00").toISOString(),
+                reason: "pregnancy checkup",
+                completed: true,
+            }
+        })
+        // Add Appointment 23
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 26 } },
+                employee: { connect: { employeeId: 9 } },
+                appointmentDateTime: new Date("2023-03-24 10:00").toISOString(),
+                reason: "chest pain and shortness of breath",
+                completed: true,
+            }
+        })
+        // Add Appointment 24
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 24 } },
+                employee: { connect: { employeeId: 6 } },
+                appointmentDateTime: new Date("2023-03-27 14:00").toISOString(),
+                reason: "irregular menstruation",
+                completed: true,
+            }
+        })
+        // Add Appointment 25
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 27 } },
+                employee: { connect: { employeeId: 4 } },
+                appointmentDateTime: new Date("2023-04-25 14:00").toISOString(),
+                reason: "difficulty urinating",
+                completed: true,
+            }
+        })
+        // Add Appointment 26
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 20 } },
+                employee: { connect: { employeeId: 2 } },
+                appointmentDateTime: new Date("2023-05-16 14:00").toISOString(),
+                reason: "eye redness and itching",
+                completed: true,
+            }
+        })
+        // Add Appointment 27
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 18 } },
+                employee: { connect: { employeeId: 1 } },
+                appointmentDateTime: new Date("2023-06-23 16:00").toISOString(),
+                reason: "routine checkup",
+                completed: true,
+            }
+        })
+        // Add Appointment 28
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 23 } },
+                employee: { connect: { employeeId: 6 } },
+                appointmentDateTime: new Date("2023-07-03 10:00").toISOString(),
+                reason: "infertility",
+                completed: true,
+            }
+        })
+        // Add Appointment 29
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 22 } },
+                employee: { connect: { employeeId: 7 } },
+                appointmentDateTime: new Date("2023-08-04 14:00").toISOString(),
+                reason: "severe acne",
+                completed: true,
+            }
+        })
+        // Add Appointment 30
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 24 } },
+                employee: { connect: { employeeId: 2 } },
+                appointmentDateTime: new Date("2023-08-06 15:00").toISOString(),
+                reason: "difficulty seeing at night; blurry vision",
+                completed: true,
+            }
+        })
+        // Add Appointment 31
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 28 } },
+                employee: { connect: { employeeId: 7 } },
+                appointmentDateTime: new Date("2023-08-07 14:00").toISOString(),
+                reason: "severe acne",
+                completed: true,
+            }
+        })
+        // Add Appointment 32
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 25 } },
+                employee: { connect: { employeeId: 9 } },
+                appointmentDateTime: new Date("2023-08-23 16:00").toISOString(),
+                reason: "stomach cramps and has lump; fever and nausea",
+                completed: true,
+            }
+        })
+        // Add Appointment 33
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 26 } },
+                employee: { connect: { employeeId: 4 } },
+                appointmentDateTime: new Date("2023-08-23 10:00").toISOString(),
+                reason: "blood in urine",
+                completed: true,
+            }
+        })
+        // Add Appointment 34
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 25 } },
+                employee: { connect: { employeeId: 9 } },
+                appointmentDateTime: new Date("2023-09-16 10:00").toISOString(),
+                reason: "lump in stomach; jaundice",
+                remarks: "pending referral to external gastroenterologist",
+                completed: true,
+            }
+        })
+        // Add Appointment 35
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 17 } },
+                employee: { connect: { employeeId: 1 } },
+                appointmentDateTime: new Date("2023-09-20 11:00").toISOString(),
+                reason: "high blood pressure",
+                completed: true,
+            }
+        })
+        // Add Appointment 36
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 20 } },
+                employee: { connect: { employeeId: 6 } },
+                appointmentDateTime: new Date("2023-09-25 14:00").toISOString(),
+                reason: "vaginal bleeding",
+                completed: true,
+            }
+        })
+        // Add Appointment 37
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 1 } },
+                employee: { connect: { employeeId: 2 } },
+                appointmentDateTime: new Date("2023-11-27 13:30").toISOString(),
+                reason: "routine vision checkup",
+            }
+        })
+        // Add Appointment 38
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 21 } },
+                employee: { connect: { employeeId: 1 } },
+                appointmentDateTime: new Date("2023-10-07 10:00").toISOString(),
+                reason: "severe headaches & seizures",
+                remarks: "to transfer to neurologist Dr. K",
+                completed: true,
+            }
+        })
+        // Add Appointment 39
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 23 } },
+                employee: { connect: { employeeId: 1 } },
+                appointmentDateTime: new Date("2023-11-12 10:00").toISOString(),
+                reason: "routine checkup",
+                remarks: "patient requests for blood test",
+            }
+        })
+        // Add Appointment 40
+        await this.prisma.appointment.create({
+            data: {
+                patient: { connect: { patientId: 2 } },
+                employee: { connect: { employeeId: 9 } },
+                appointmentDateTime: new Date("2023-10-27 13:30").toISOString(),
+                reason: "influenza vaccination",
+                completed: true,
+            }
+        })
 
         // ===== DIAGNOSES =====
         // Add Diagnosis 1
@@ -707,6 +1161,177 @@ export class SeedService {
                 icd: "M17.0",
                 symptoms: "knee pain on both sides",
                 remarks: "Bilateral primary osteoarthritis of knee; patient requires physiotherapy",
+            }
+        })
+        // Add Diagnosis 11
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 18 } },
+                icd: "R06.6",
+                symptoms: "intractable hiccups",
+                remarks: "persistent hiccups",
+            }
+        })
+        // Add Diagnosis 12
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 19 } },
+                icd: "R35.1",
+                symptoms: "frequent urination at night",
+                remarks: "nocturia",
+            }
+        })
+        // Add Diagnosis 13
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 20 } },
+                icd: "H52.223",
+                symptoms: "difficulty seeing at night; blurred vision; sensitivity to light",
+                remarks: "Bilateral astigmatism",
+            }
+        })
+        // Add Diagnosis 14
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 21 } },
+                icd: "L56.2",
+                symptoms: "erythema; solar urticaria",
+                remarks: "photocontact dermatitis",
+            }
+        })
+        // Add Diagnosis 15
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 22 } },
+                icd: "Z34.01",
+                symptoms: "nausea; fatigue",
+                remarks: "supervision of normal pregnancy at first trimester",
+            }
+        })
+        // Add Diagnosis 16
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 23 } },
+                icd: "I31.3",
+                symptoms: "chest pain",
+                remarks: "noninflammatory pericardial effusion",
+            }
+        })
+        // Add Diagnosis 17
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 24 } },
+                icd: "N91.1",
+                symptoms: "irregular menstruation",
+                remarks: "secondary amenorrhoea",
+            }
+        })
+        // Add Diagnosis 18
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 25 } },
+                icd: "N13.8",
+                symptoms: "difficulty urinating",
+                remarks: "other obstructive and reflux uropathy",
+            }
+        })
+        // Add Diagnosis 19
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 26 } },
+                icd: "H10.9",
+                symptoms: "eye redness and itching",
+                remarks: "unspecified conjunctivitis",
+            }
+        })
+        // Add Diagnosis 20
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 28 } },
+                icd: "N97.2",
+                symptoms: "infertility",
+                remarks: "female infertility of uterine origin",
+            }
+        })
+        // Add Diagnosis 21
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 29 } },
+                icd: "L70.0",
+                symptoms: "chronic and severe acne",
+                remarks: "acne vulgaris",
+            }
+        })
+        // Add Diagnosis 22
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 30 } },
+                icd: "H52.223",
+                symptoms: "difficulty seeing at night; sensitivity to light",
+                remarks: "Bilateral astigmatism",
+            }
+        })
+        // Add Diagnosis 23
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 31 } },
+                icd: "L70.0",
+                symptoms: "incipient acne",
+                remarks: "acne vulgaris",
+            }
+        })
+        // Add Diagnosis 24
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 32 } },
+                icd: "R10.9",
+                symptoms: "stomach cramps; lump; fever and nausea",
+                remarks: "unspecified abdominal pain",
+            }
+        })
+        // Add Diagnosis 25
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 33 } },
+                icd: "R31.9",
+                symptoms: "blood in urine",
+                remarks: "unspecified hematuria",
+            }
+        })
+        // Add Diagnosis 26
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 34 } },
+                icd: "C23",
+                symptoms: "lump in stomach; jaundice",
+                remarks: "malignant neoplasm of gallbladder (gallbladder cancer)",
+            }
+        })
+        // Add Diagnosis 27
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 35 } },
+                icd: "I10",
+                symptoms: "hypertension",
+                remarks: "primary hypertension",
+            }
+        })
+        // Add Diagnosis 28
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 36 } },
+                icd: "N92.1",
+                symptoms: "menometrorrhagia",
+                remarks: "excessive and frequent menstruation w/ irregular cycle",
+            }
+        })
+        // Add Diagnosis 29
+        await this.prisma.diagnosis.create({
+            data: {
+                appointment: { connect: { appointmentId: 38 } },
+                icd: "I63.111",
+                symptoms: "seizures and hemiparesis",
+                remarks: "cerebral infarction due to embolism of right vertebral artery",
             }
         })
     }
