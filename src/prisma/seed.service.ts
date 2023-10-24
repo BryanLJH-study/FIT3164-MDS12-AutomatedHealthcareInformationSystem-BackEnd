@@ -193,6 +193,7 @@ export class SeedService {
                 emergencyNo: "+60174236470",
                 emergencyRemarks: "spouse",
                 remarks: "pancreatic cancer in remission",
+                createdAt: new Date("2023-08-01").toISOString(),
             }
         })
         // Add Patient 2
@@ -209,6 +210,8 @@ export class SeedService {
                 emergencyNo: "+601184774452",
                 emergencyRemarks: "grandchild",
                 remarks: "appendectomy done in 2005",
+                createdAt: new Date("2023-08-01").toISOString(),
+
             }
         })
         // Add Patient 3
@@ -225,6 +228,8 @@ export class SeedService {
                 emergencyNo: "+601170735766",
                 emergencyRemarks: "spouse",
                 remarks: "obese as of Feb 2015",
+                createdAt: new Date("2023-08-01").toISOString(),
+
             }
         })
         // Add Patient 4
@@ -241,6 +246,8 @@ export class SeedService {
                 emergencyNo: "+601115546099",
                 emergencyRemarks: "spouse",
                 remarks: "type 2 diabetic",
+                createdAt: new Date("2023-08-01").toISOString(),
+
             }
         })
         // Add Patient 5
@@ -257,6 +264,8 @@ export class SeedService {
                 emergencyNo: "+601172402354",
                 emergencyRemarks: "son",
                 remarks: "vegetarian",
+                createdAt: new Date("2023-08-09").toISOString(),
+
             }
         })
         // Add Patient 6
@@ -273,6 +282,8 @@ export class SeedService {
                 emergencyNo: "+60107141701",
                 emergencyRemarks: "sibling",
                 remarks: null,
+                createdAt: new Date("2023-08-09").toISOString(),
+
             }
         })
         // Add Patient 7
@@ -289,6 +300,8 @@ export class SeedService {
                 emergencyNo: "+601131482288",
                 emergencyRemarks: "spouse",
                 remarks: null,
+                createdAt: new Date("2023-08-09").toISOString(),
+
             }
         })
         // Add Patient 8
@@ -305,6 +318,8 @@ export class SeedService {
                 emergencyNo: "+60107645318",
                 emergencyRemarks: "spouse",
                 remarks: null,
+                createdAt: new Date("2023-08-17").toISOString(),
+
             }
         })
         // Add Patient 9
@@ -321,6 +336,8 @@ export class SeedService {
                 emergencyNo: "+601165347790",
                 emergencyRemarks: "mother",
                 remarks: null,
+                createdAt: new Date("2023-08-17").toISOString(),
+
             }
         })
         // Add Patient 10
@@ -337,6 +354,8 @@ export class SeedService {
                 emergencyNo: "+601153522313",
                 emergencyRemarks: "spouse",
                 remarks: null,
+                createdAt: new Date("2023-08-17").toISOString(),
+
             }
         })
         // Add Patient 11
@@ -353,6 +372,8 @@ export class SeedService {
                 emergencyNo: "+601155513508",
                 emergencyRemarks: "grandchild",
                 remarks: null,
+                createdAt: new Date("2023-09-07").toISOString(),
+
             }
         })
         // Add Patient 12
@@ -369,6 +390,8 @@ export class SeedService {
                 emergencyNo: "+60132000782",
                 emergencyRemarks: "spouse",
                 remarks: null,
+                createdAt: new Date("2023-09-07").toISOString(),
+
             }
         })
         // Add Patient 13
@@ -385,6 +408,8 @@ export class SeedService {
                 emergencyNo: "+601166785366",
                 emergencyRemarks: "spouse",
                 remarks: null,
+                createdAt: new Date("2023-09-07").toISOString(),
+
             }
         })
         // Add Patient 14
@@ -401,6 +426,8 @@ export class SeedService {
                 emergencyNo: "+60160177896",
                 emergencyRemarks: "daughter",
                 remarks: "known IBS",
+                createdAt: new Date("2023-09-07").toISOString(),
+
             }
         })
         // Add Patient 15
@@ -417,6 +444,7 @@ export class SeedService {
                 emergencyNo: "+60192242830",
                 emergencyRemarks: "son",
                 remarks: "stroke in 2023",
+                createdAt: new Date("2023-10-07").toISOString(),
             }
         })
 
@@ -426,7 +454,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 15 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-08-01").toISOString(),
+                appointmentDateTime: new Date("2023-08-01 15:40").toISOString(),
                 reason: "routine checkup",
                 completed: true,
             }
@@ -446,7 +474,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 5 } },
                 employee: { connect: { employeeId: 9 } },
-                appointmentDateTime: new Date("2023-08-14").toISOString(),
+                appointmentDateTime: new Date("2023-08-14 12:20").toISOString(),
                 reason: "shortness of breath; lightheadedness",
                 completed: true,
             }
@@ -456,7 +484,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 3 } },
                 employee: { connect: { employeeId: 6 } },
-                appointmentDateTime: new Date("2023-08-20").toISOString(),
+                appointmentDateTime: new Date("2023-08-20 16:40").toISOString(),
                 reason: "debilitating period pain",
                 completed: true,
             }
@@ -466,7 +494,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 14 } },
                 employee: { connect: { employeeId: 9 } },
-                appointmentDateTime: new Date("2023-08-28").toISOString(),
+                appointmentDateTime: new Date("2023-08-28 15:20").toISOString(),
                 reason: "persistent stomachache",
                 completed: true,
             }
@@ -476,7 +504,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 2 } },
                 employee: { connect: { employeeId: 9 } },
-                appointmentDateTime: new Date("2023-09-11").toISOString(),
+                appointmentDateTime: new Date("2023-09-11 16:00").toISOString(),
                 reason: "fever; headache",
                 remarks: "failed to show up",
                 completed: false,
@@ -487,7 +515,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 8 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-09-13").toISOString(),
+                appointmentDateTime: new Date("2023-09-13 11:40").toISOString(),
                 reason: "excessive daytime fatigue; morning headaches; family tells of snoring",
                 completed: true,
             }
@@ -497,7 +525,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 7 } },
                 employee: { connect: { employeeId: 9 } },
-                appointmentDateTime: new Date("2023-09-14").toISOString(),
+                appointmentDateTime: new Date("2023-09-14 10:20").toISOString(),
                 reason: "routine checkup",
                 remarks: "medication regimen to be adjusted",
                 completed: true,
@@ -508,7 +536,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 14 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-09-22").toISOString(),
+                appointmentDateTime: new Date("2023-09-22 11:40").toISOString(),
                 reason: "persistent stomachache; diarrhoea",
                 remarks: "possible need for further screening",
                 completed: true,
@@ -519,7 +547,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 1 } },
                 employee: { connect: { employeeId: 2 } },
-                appointmentDateTime: new Date("2023-09-24").toISOString(),
+                appointmentDateTime: new Date("2023-09-24 12:00").toISOString(),
                 reason: "routine checkup",
                 completed: true,
             }
@@ -529,7 +557,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 4 } },
                 employee: { connect: { employeeId: 4 } },
-                appointmentDateTime: new Date("2023-09-26").toISOString(),
+                appointmentDateTime: new Date("2023-09-26 16:40").toISOString(),
                 reason: "groin pain; swollen scrotum",
                 remarks: "HIGH PRIORITY",
                 completed: true,
@@ -540,7 +568,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 12 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-10-01").toISOString(),
+                appointmentDateTime: new Date("2023-10-01 12:20").toISOString(),
                 reason: "confusion; hallucinations; dizziness; vomiting; lack of appetite; severe headache",
                 remarks: "pending referral to specialist",
                 completed: true,
@@ -551,7 +579,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 1 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-10-05").toISOString(),
+                appointmentDateTime: new Date("2023-10-05 11:40").toISOString(),
                 reason: "knee pain; joint stiffness",
                 completed: true,
             }
@@ -561,7 +589,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 11 } },
                 employee: { connect: { employeeId: 7 } },
-                appointmentDateTime: new Date("2023-10-18").toISOString(),
+                appointmentDateTime: new Date("2023-10-18 10:20").toISOString(),
                 reason: "monitoring of eczema",
                 remarks: "referral provided by GP in Poliklinik Mah",
             }
@@ -571,7 +599,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 10 } },
                 employee: { connect: { employeeId: 2 } },
-                appointmentDateTime: new Date("2023-11-20").toISOString(),
+                appointmentDateTime: new Date("2023-11-20 13:20").toISOString(),
                 reason: "check if fit for LASIK",
                 remarks: "follow-up details to be provided closer to date; to refer to specialist ISEC",
             }
@@ -581,7 +609,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 6 } },
                 employee: { connect: { employeeId: 6 } },
-                appointmentDateTime: new Date("2023-12-15").toISOString(),
+                appointmentDateTime: new Date("2023-12-15 12:40").toISOString(),
                 reason: "pregnancy test",
                 remarks: "to discuss test results",
             }
@@ -591,7 +619,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 9 } },
                 employee: { connect: { employeeId: 9 } },
-                appointmentDateTime: new Date("2023-12-20").toISOString(),
+                appointmentDateTime: new Date("2023-12-20 14:00").toISOString(),
                 reason: "lung screening",
             }
         })
