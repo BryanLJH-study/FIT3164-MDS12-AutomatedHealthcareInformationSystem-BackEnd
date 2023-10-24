@@ -436,7 +436,7 @@ export class SeedService {
             data: {
                 patient: { connect: { patientId: 13 } },
                 employee: { connect: { employeeId: 1 } },
-                appointmentDateTime: new Date("2023-08-10").toISOString(),
+                appointmentDateTime: new Date("2023-08-10 16:40").toISOString(),
                 reason: "routine checkup",
                 completed: true,
             }
